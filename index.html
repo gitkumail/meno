@@ -9,13 +9,14 @@
 body {
   margin: 0;
   height: 100vh;
-  background: url('back_rose.png') center/cover no-repeat; /* Page background */
+  background: url('back_rose.png') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   font-family: "Georgia", "Times New Roman", serif;
   color: #5a2a2a;
+  position: relative;
 }
 
 /* ===== Floating Petals ===== */
@@ -39,7 +40,7 @@ body {
 .scroll {
   width: 300px;
   height: 180px;
-  background: url('scroll-bg.png') center/cover no-repeat; /* Scroll background */
+  background: url('scroll-bg.png') center/cover no-repeat;
   border-radius: 18px;
   box-shadow:
     0 30px 60px rgba(0,0,0,0.3),
@@ -132,6 +133,66 @@ h1 {
 .scroll.open .seal {
   display: none;
 }
+
+.scrollable-text {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Optional: elegant scrollbar */
+.scrollable-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-text::-webkit-scrollbar-thumb {
+  background: rgba(181, 75, 111, 0.5);
+  border-radius: 6px;
+}
+
+/* ===== Countdown Clock ===== */
+#countdown-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 180px;
+  text-align: center;
+  font-family: "Georgia", serif;
+  color: #b54b6f;
+}
+
+#countdown-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#countdown-input input, #countdown-input button {
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #b54b6f;
+  cursor: pointer;
+}
+
+#bride-groom {
+  position: relative;
+  width: 160px;
+  height: 30px;
+  margin-top: 15px;
+  background: transparent;
+}
+
+#bride, #groom {
+  position: absolute;
+  top: 0;
+  font-size: 1.5em;
+  transition: left 1s linear, right 1s linear;
+}
+
+#bride { left: 0; }
+#groom { right: 0; }
+
+#time-text { margin-top: 8px; font-size: 0.9em; }
 </style>
 </head>
 
@@ -145,9 +206,23 @@ h1 {
   <div class="seal">❤️</div>
   <div class="letter">
     <h1>Manar My Habibti,</h1>
-    <p>I LOVE YOU SO MUCH MENO</p>
-    <p>:*.</p>
-    <p>As this scroll opens, so does my heart — quietly, honestly, and completely for you.</p>
+<div class="scrollable-text">
+  <p>I LOVE YOU SO MUCH MENO</p>
+  <p>its unbelievable among 8.2 billion people, Allah crossed our paths, created us Muslims, made us healthy and opposite gender and made us met in the same era. that is Everything that 2 people need to get married. its so true that 2 people only meet each other if Allah want them to meet, And WE? I fall in love with you everyday more than previous day., .</p>
+  <p>Love of my life! .</p>
+
+</p>I am so happy with you, it seems like everything that I liked ever is put inside one person, and brought in my Life. .</p>
+
+</p>We know for a Muslim life is a gift of ALLAH if they succeeded, and a good spouse? Indeed is the best of all the Blessings in life. .</p>
+
+</p>My love I am so happy that Allah brought you in my life, You are someone that matters to me like no one else matters, And now going in life i am looking forward to take your hand in mine, to start this special relation, the relation that Quran itself said is the most closest among humans. Love I will be so happy to have you as the partner of me in my everything. my other Half, The share holder of my life. you being my everyday, and the human with whom I spend my complete worldly life and then enter Jannah with hands in hands to spend the eternal life. you being My wife and My happiness. Meno Love! you will be a perfect smile of my face after a hectic day InshALLAH, And InshALLAH soon we will be the spouses, who plan their future with each other everyday and live a blessed life with ALLAH's mercy. InshALLAH soon you will be so blessing of your and mine home my love, you being the one who complete my religion, the mother of my kids. We Both are Alhamdulillah agreed and are ready for marriage, and The things that are pending, with ALLAH's help will also be resolved soon InshALLAH. .</p>
+
+</p> Love I just want to say that you are amazingly sweet and all peace and pure, and I want to be the Man for you that love you, care you and your everything, your health, your food, your rest, your peace, your worries, your iman, your salah, your emotions, your world, your akhirah, your happiness, and growth with me. I want to be a man, who know his duties towards his wife and kids. The one who care the wife and win everything with his wife and kids. I will insALLAH improve me and you, everyday. And i am so happy for my love that you are the one who believes the same. also i am thankful to this beautiful girl who trusted me, and believed me. I want myself to be a comfort for you and i will be a real guardian, a good husband, InsALLAH the one that loves his wife, and is aware of his duties, the one that is the trust of his girl. .</p>
+
+</p>Also Happy new year MENOO! 2025 is going to close in few days and the new year is coming, so many things happed this 2025 year, Good and bad all mixed, and all were the big things, from losing the loved ones to having the loved ones, But life is a gift of ALLAH, everyday is a new chance to improve, and we are going to be the best of humans that are blessed by ALLAH with love and mercy, i am thinking to make some plans with my partner in coming days to make a map for next year, a life changing year for me and my love, where we grow more in everything, where we become more strong and educated, more good in our deen and dunai, more healthy and blessed, more caring, more wise and happy, more close to ALLAH, more sensible, more pure, more loyal towards everything beautiful, and more financially strong, just writing this letter to my future wife for letting her know that your husband is planning for you and our kids, with Allah's mercy we will be so strong in everything in both world. .</p>
+
+</p>I love you a lot, peace of my heart.</p>
+</div>
     <div class="signature">
       Always yours,<br>
       Your Name ❤️
@@ -155,21 +230,37 @@ h1 {
   </div>
 </div>
 
+<!-- Countdown Timer -->
+<div id="countdown-container">
+  <div id="countdown-input">
+    <label>Engagement Date:</label>
+    <input type="date" id="target-date">
+    <label>Time:</label>
+    <input type="time" id="target-time">
+    <button id="start-countdown">Start Countdown</button>
+  </div>
+  <div id="bride-groom" style="display:none;">
+    <span id="bride">👰</span>
+    <span id="groom">🤵</span>
+  </div>
+  <div id="time-text"></div>
+</div>
+
 <script>
+// Scroll open & music
 const scroll = document.getElementById("scroll");
 const audio = document.getElementById("bgm");
-
 scroll.addEventListener("click", () => {
   scroll.classList.add("open");
   audio.volume = 0.25;
   audio.play();
 }, { once: true });
 
-// Add falling petals using local image
+// Floating petals
 for (let i = 0; i < 18; i++) {
   const petal = document.createElement("div");
   petal.className = "petal";
-  petal.style.backgroundImage = "url('petal.png')"; // Local flower image
+  petal.style.backgroundImage = "url('petal.png')";
   petal.style.left = Math.random() * 100 + "vw";
   petal.style.animationDuration = 8 + Math.random() * 10 + "s";
   petal.style.width = 25 + Math.random()*20 + "px";
@@ -177,6 +268,58 @@ for (let i = 0; i < 18; i++) {
   petal.style.opacity = 0.6 + Math.random() * 0.3;
   document.body.appendChild(petal);
 }
+
+// Countdown clock logic
+const startBtn = document.getElementById("start-countdown");
+const targetDateInput = document.getElementById("target-date");
+const targetTimeInput = document.getElementById("target-time");
+const countdownInputDiv = document.getElementById("countdown-input");
+const brideGroomDiv = document.getElementById("bride-groom");
+const bride = document.getElementById("bride");
+const groom = document.getElementById("groom");
+const timeText = document.getElementById("time-text");
+
+startBtn.addEventListener("click", () => {
+  const dateVal = targetDateInput.value;
+  const timeVal = targetTimeInput.value || "00:00";
+  if (!dateVal) return alert("Please select a date!");
+
+  const target = new Date(dateVal + "T" + timeVal);
+  countdownInputDiv.style.display = "none";
+  brideGroomDiv.style.display = "block";
+
+  const start = new Date();
+  const containerWidth = 160;
+  const emojiWidth = 20;
+  const maxDistance = containerWidth - emojiWidth;
+
+  const interval = setInterval(() => {
+    const now = new Date();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      bride.style.left = (maxDistance / 2) + "px";
+      groom.style.right = (maxDistance / 2) + "px";
+      timeText.textContent = "💍 Time to get married! 💍";
+      clearInterval(interval);
+      return;
+    }
+
+    const fractionRemaining = diff / (target - start);
+    const distance = maxDistance * fractionRemaining / 2;
+
+    bride.style.left = distance + "px";
+    groom.style.right = distance + "px";
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const minutes = Math.floor((diff / 1000/60) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    timeText.textContent = `Remaining: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+  }, 1000);
+});
 </script>
 
 </body>
