@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+/* ===== Global ===== */
+body {
+  margin: 0;
+  height: 100vh;
+  background: url('back_rose.png') center/cover no-repeat; /* Page background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #5a2a2a;
+}
+
+/* ===== Floating Petals ===== */
+.petal {
+  position: absolute;
+  top: -50px;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* ===== Scroll ===== */
+.scroll {
+  width: 300px;
+  height: 180px;
+  background: url('scroll-bg.png') center/cover no-repeat; /* Scroll background */
+  border-radius: 18px;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.3),
+    inset 0 0 30px rgba(255,255,255,0.6);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 1.4s ease;
+}
+
+.scroll::before,
+.scroll::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 34px;
+  left: 0;
+  background: linear-gradient(#e7cfa0, #c7a76a);
+}
+
+.scroll::before {
+  top: 0;
+  border-radius: 18px 18px 0 0;
+}
+
+.scroll::after {
+  bottom: 0;
+  border-radius: 0 0 18px 18px;
+}
+
+/* ===== Heart Seal ===== */
+.seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  animation: pulse 1.8s infinite;
+  filter: drop-shadow(0 0 8px rgba(255,0,100,0.5));
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.95); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+  100% { transform: translate(-50%, -50%) scale(0.95); }
+}
+
+.scroll.open {
+  width: 820px;
+  height: 540px;
+  cursor: default;
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.35),
+    inset 0 0 40px rgba(255,255,255,0.8);
+}
+
+.letter {
+  opacity: 0;
+  padding: 70px 80px;
+  line-height: 2;
+  font-size: 1.1em;
+  transition: opacity 1.5s ease;
+  position: relative;
+}
+
+.scroll.open .letter {
+  opacity: 1;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 2.6em;
+}
+
+.letter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255,200,150,0.25), transparent 70%);
+  pointer-events: none;
+}
+
+.signature {
+  margin-top: 60px;
+  text-align: right;
+  font-style: italic;
+}
+
+.scroll.open .seal {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+  <source src="meno.mp3" type="audio/mpeg">
+</audio>
+
+<div class="scroll" id="scroll">
+  <div class="seal">❤️</div>
+  <div class="letter">
+    <h1>Manar My Habibti,</h1>
+    <p>I LOVE YOU SO MUCH MENO</p>
+    <p>:*.</p>
+    <p>As this scroll opens, so does my heart — quietly, honestly, and completely for you.</p>
+    <div class="signature">
+      Always yours,<br>
+      Your Name ❤️
+    </div>
+  </div>
+</div>
+
+<script>
+const scroll = document.getElementById("scroll");
+const audio = document.getElementById("bgm");
+
+scroll.addEventListener("click", () => {
+  scroll.classList.add("open");
+  audio.volume = 0.25;
+  audio.play();
+}, { once: true });
+
+// Add falling petals using local image
+for (let i = 0; i < 18; i++) {
+  const petal = document.createElement("div");
+  petal.className = "petal";
+  petal.style.backgroundImage = "url('petal.png')"; // Local flower image
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.animationDuration = 8 + Math.random() * 10 + "s";
+  petal.style.width = 25 + Math.random()*20 + "px";
+  petal.style.height = 25 + Math.random()*20 + "px";
+  petal.style.opacity = 0.6 + Math.random() * 0.3;
+  document.body.appendChild(petal);
+}
+</script>
+
+</body>
+</html>
